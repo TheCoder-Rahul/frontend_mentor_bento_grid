@@ -1,0 +1,21 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --white: hsl(0, 0%, 100%);
+  --purple-700: hsl(257, 40%, 49%);
+  --magenta-400: hsl(300, 69%, 71%);
+  --body-font: "Open Sans", sans-serif;
+  --heading-font: "Poppins", sans-serif;
+}
+body {
+  font-size: 1rem;
+  color: var(--white);
+  font-family: var(--body-font);
+  background: url(./images/bg-mobile.svg) no-repeat var(--purple-700);
+}
+
+.attribution { font-size: 0.6875rem; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
