@@ -4,17 +4,38 @@
   box-sizing: border-box;
 }
 :root {
+  --black: hsl(0, 0%, 7%);
   --white: hsl(0, 0%, 100%);
-  --purple-700: hsl(257, 40%, 49%);
-  --magenta-400: hsl(300, 69%, 71%);
-  --body-font: "Open Sans", sans-serif;
-  --heading-font: "Poppins", sans-serif;
+  --yellow-100: hsl(31, 66%, 93%);
+  --yellow-500: hsl(39, 100%, 71%);
+  --purple-100: hsl(254, 88%, 90%);
+  --purple-500: hsl(256, 67%, 59%);
+}
+@font-face {
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  font-family: 'DM Sans';
+  src: url(./assets/fonts/static/DMSans-Regular.ttf) format('truetype');
+}
+@font-face {
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  font-family: 'DM Sans';
+  src: url(./assets/fonts/static/DMSans-Medium.ttf) format('truetype');
+}
+@font-face {
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+  font-family: 'DM Sans';
+  src: url(./assets/fonts/static/DMSans-MediumItalic.ttf) format('truetype');
 }
 body {
   font-size: 1rem;
-  color: var(--white);
-  font-family: var(--body-font);
-  background: url(./images/bg-mobile.svg) no-repeat var(--purple-700);
+  background-color: var(--white);
+  font-family: 'DM Sans', sans-serif;
 }
 
 .attribution { font-size: 0.6875rem; text-align: center; }
