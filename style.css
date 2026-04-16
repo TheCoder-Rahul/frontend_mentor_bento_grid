@@ -12,54 +12,126 @@
   font-family: 'DM Sans';
   src: url(./assets/fonts/DMSans-Italic-VariableFont_opsz\,wght.ttf) format('truetype');
 }
-*, *::before, *::after {
-  box-sizing: border-box;
-}
 :root {
+  --fs-xl: 3.5rem;
+  --fs-md: 1.5rem;
+  --fs-lg: 2.25rem;
   --fs-regular: 1.125rem;
-  --fs-heading: 1.125rem;
-  --fs-sub-heading: 1.125rem;
-  --black: hsl(0, 0%, 7%);
+  --dark: hsl(0, 0%, 7%);
   --white: hsl(0, 0%, 100%);
-  --yellow-100: hsl(31, 66%, 93%);
-  --yellow-500: hsl(39, 100%, 71%);
-  --purple-100: hsl(254, 88%, 90%);
-  --purple-500: hsl(256, 67%, 59%);
-  --font-family: "DM Sans", sans-serif;
+  --off-white: hsl(0, 0%, 95%);
+  --primary: hsl(256, 67%, 59%);
+  --secondary: hsl(39, 100%, 71%);
+  --primary-light: hsl(254, 88%, 90%);
+  --secondary-light: hsl(31, 66%, 93%);
 }
-body {
-  display: flex;
-  min-height: 100vh;
-  color: var(--black);
-  font-size: 1.125rem;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  font-family: 'DM Sans', sans-serif;
-  background-color: hsl(0, 0%, 93%);
+@layer reset {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  h1, h2, p {
+    margin: 0;
+  }
+  h1, h2 {
+    font-weight: 500;
+  }
+  img {
+    display: block;
+    max-width: 100%;
+  }
 }
-h1, h2 {
-  line-height: 90%;
-  font-weight: 500;
+@layer base {
+  html {
+    line-height: 1.2;
+    font-family: 'DM Sans', sans-serif;
+  }
+  body {
+    color: var(--black);
+    font-size: var(--fs-regular);
+    background-color: var(--off-white);
+  }
+  h1, h2 {
+    line-height: 1.1;
+    text-wrap: balance;
+    color: var(--head-text-color, inherit);
+    font-size: var(--head-font-size, var(--fs-md));
+
+    span {
+      display: var(--head-span-display, inline);
+      font-style: var(--head-span-font-style, normal);
+      color: var(--head-span-text-color, var(--dark));
+      font-size: var(--head-span-font-size, var(--fs-regular));
+    }
+  }
 }
-img {
-  height: auto;
-  display: block;
-  max-width: 100%;
+@layer layout {
+  .grid_wrapper {
+    gap: 1.5rem;
+    display: grid;
+    margin-block: 3rem;
+    margin-inline: auto;
+    max-inline-size: min(60rem, 95%);
+    grid-template-areas: "first" "second" "third" "fourth" "fifth" "sixth" "seventh" "last";
+
+    @media (width > 60rem) {
+      grid-template-areas:  "seventh first first fourth" "seventh second third fourth" "last second third fourth" "last sixth fifth fifth";
+    }
+  }
+  article {
+    display: grid;
+    overflow: clip;
+    gap: var(--article-grid-gap, 2rem);
+    padding: var(--article-padding, 1.5rem);
+    text-align: var(--article-hor-align, start);
+    color: var(--article-font-size, var(--dark));
+    align-items: var(--article-ver-align, start);
+    align-content: var(--article-ver-align, start);
+    justify-content: var(--article-hor-align, start);
+    border-radius: var(--article-border-radius, 1rem);
+    box-shadow: 0 0.25rem 1rem 0 hsla(0, 0%, 100%, 0.5);
+    background-color: var(--article-background-color, var(--white));
+  }
+  article img {
+    width: var(--article-img-width, 100%);
+    order: var(--article-img-order, inherit);
+    max-width: var(--article-img-width, 100%);
+  }
+  article:first-child {
+    grid-area: first;
+  }
+  article:nth-child(2) {
+    grid-area: second;
+  }
+  article:nth-child(3) {
+    grid-area: third;
+  }
+  article:nth-child(4) {
+    grid-area: fourth;
+  }
+  article:nth-child(5) {
+    grid-area: fifth;
+  }
+  article:nth-child(6) {
+    grid-area: sixth;
+  }
+  article:nth-child(7) {
+    grid-area: seventh;
+  }
+  article:last-child {
+    grid-area: last;
+  }
 }
-.grid_wrapper {
-  gap: 1.5rem;
-  display: grid;
-  margin: 3rem auto;
-  width: min(60rem, 90%);
+
+@layer utilities {
+  .visually-first {
+    order: -1;
+  }
 }
-article {
-  gap: 0.5rem;
-  display: flex;
-  overflow: hidden;
-  align-items: center;
-  border-radius: 0.5rem;
-  flex-direction: column;
-  justify-content: center;
-  box-shadow: 0 0.25rem 1rem 0 hsla(0, 0%, 100%, 0.5);
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
 }
