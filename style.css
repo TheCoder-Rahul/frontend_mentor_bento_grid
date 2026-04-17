@@ -13,9 +13,9 @@
   src: url(./assets/fonts/DMSans-Italic-VariableFont_opsz\,wght.ttf) format('truetype');
 }
 :root {
-  --fs-xl: 3.5rem;
-  --fs-md: 1.5rem;
-  --fs-lg: 2.25rem;
+  --fs-lg: 2rem;
+  --fs-xl: 2.75rem;
+  --fs-md: 1.563rem;
   --fs-regular: 1.125rem;
   --dark: hsl(0, 0%, 7%);
   --white: hsl(0, 0%, 100%);
@@ -51,22 +51,23 @@
     background-color: var(--off-white);
   }
   h1, h2 {
-    line-height: 1.1;
-    text-wrap: balance;
+    line-height: 0.85;
     color: var(--head-text-color, inherit);
+    text-wrap: var(--head-text-wrap, balance);
+    letter-spacing: var(--head-letter-space, -1px);
     font-size: var(--head-font-size, var(--fs-md));
 
     span {
       display: var(--head-span-display, inline);
+      color: var(--head-span-text-color, inherit);
+      font-size: var(--head-span-font-size, inherit);
       font-style: var(--head-span-font-style, normal);
-      color: var(--head-span-text-color, var(--dark));
-      font-size: var(--head-span-font-size, var(--fs-regular));
     }
   }
 }
 @layer layout {
   .grid_wrapper {
-    gap: 1.5rem;
+    gap: 2rem;
     display: grid;
     margin-block: 3rem;
     margin-inline: auto;
@@ -80,15 +81,16 @@
   article {
     display: grid;
     overflow: clip;
-    gap: var(--article-grid-gap, 2rem);
+    gap: var(--article-grid-gap, 1rem);
     padding: var(--article-padding, 1.5rem);
     text-align: var(--article-hor-align, start);
-    color: var(--article-font-size, var(--dark));
     align-items: var(--article-ver-align, start);
+    color: var(--article-text-color, var(--dark));
     align-content: var(--article-ver-align, start);
+    justify-items: var(--article-hor-align, start);
     justify-content: var(--article-hor-align, start);
-    border-radius: var(--article-border-radius, 1rem);
-    box-shadow: 0 0.25rem 1rem 0 hsla(0, 0%, 100%, 0.5);
+    box-shadow: 0 0.5rem 1rem 0 hsla(0, 0%, 10%, 0.1);
+    border-radius: var(--article-border-radius, 0.75rem);
     background-color: var(--article-background-color, var(--white));
   }
   article img {
@@ -98,27 +100,87 @@
   }
   article:first-child {
     grid-area: first;
+    --head-letter-space: 0;
+    --article-img-width: 75%;
+    --article-padding: 2.5rem;
+    --article-grid-gap: 0.75rem;
+    --article-hor-align: center;
+    --head-font-size: var(--fs-xl);
+    --article-text-color: var(--white);
+    --head-span-text-color: var(--secondary);
+    --article-background-color: var(--primary);
+
+    h1 {
+      margin-block-end: 0.5rem;
+    }
   }
   article:nth-child(2) {
     grid-area: second;
+    --head-text-wrap: wrap;
+    --article-img-order: -1;
+    --article-padding: 1rem;
+    --head-font-size: var(--fs-md);
+    --article-text-color: var(--dark);
   }
   article:nth-child(3) {
     grid-area: third;
+    --article-padding: 1rem;
+    --article-img-width: 70%;
+    --article-background-color: var(--secondary);
+    
+    img {
+      margin-block-end: -12%;
+    }
   }
   article:nth-child(4) {
     grid-area: fourth;
+    padding-block: 2rem;
+    text-wrap-style: pretty;
+    --article-padding: 1rem;
+    --article-grid-gap: 1.5rem;
+    --article-hor-align: center;
+    --article-background-color: var(--primary-light);
   }
   article:nth-child(5) {
     grid-area: fifth;
+    padding-inline: 2.5rem;
+    --head-text-wrap: wrap;
+    --article-img-order: -1;
+    --article-img-width: 90%;
+    --article-hor-align: center;
+    --head-font-size: var(--fs-lg);
+    --article-text-color: var(--white);
+    --article-background-color: var(--primary);
   }
   article:nth-child(6) {
     grid-area: sixth;
+    --head-letter-space: 0;
+    --article-img-width: 60%;
+    --article-grid-gap: 1.5rem;
+    --head-span-display: block;
+    --head-font-size: var(--fs-xl);
+    --head-span-font-size: var(--fs-regular);
+
+    span {
+      margin-block-start: 1rem;
+    }
   }
   article:nth-child(7) {
     grid-area: seventh;
+    --article-img-width: 70%;
+    --article-padding: 1.875rem;
+    --head-font-size: var(--fs-lg);
+    --head-span-font-style: italic;
+    --head-span-text-color: var(--primary);
+    --article-background-color: var(--secondary-light);
   }
   article:last-child {
     grid-area: last;
+    --head-text-wrap: wrap;
+    --article-img-width: 75%;
+    --article-grid-gap: 1.5rem;
+    --head-font-size: var(--fs-lg);
+    --article-background-color: var(--secondary);
   }
 }
 
